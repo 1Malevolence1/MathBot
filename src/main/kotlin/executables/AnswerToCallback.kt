@@ -12,7 +12,8 @@ import java.io.IOException
 
 class AnswerToCallback(
     private val mKey: String,
-    private val mMessage: String = ""
+    private val mMessage: String = "",
+    private val mIsShowAlert: Boolean = false
 ) : Executable {
 
     override fun onFailure(call: Call, e: IOException) {}
@@ -35,7 +36,7 @@ class AnswerToCallback(
                         )
                     )
                     .add("text", mMessage)
-                    .add("show_alert", "false")
+                    .add("show_alert", mIsShowAlert.toString())
                     .build()
             )
             .url("https://api.telegram.org/bot${mKey}/answerCallbackQuery")

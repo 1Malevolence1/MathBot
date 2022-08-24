@@ -2,12 +2,16 @@
   {
     "codes": [{
       "code": "mainMessage",
-      "data": 59
+      "data": 61
     }],
     "user_id": 1047301531
   },
   {
     "codes": [
+      {
+        "code": "mainMessage",
+        "data": 63
+      },
       {
         "code": "deeplinkPageNumber",
         "data": 2

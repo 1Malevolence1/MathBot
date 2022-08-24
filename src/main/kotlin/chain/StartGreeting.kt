@@ -34,8 +34,7 @@ class StartGreeting : Chain(CommandEvent("/start")) {
                         )
                     )
                 )
-            )
-            {
+            ) {
                 mStates.state(updating).editor(mStates).apply {
                     putInt("mainMessage", it)
                 }.commit()
