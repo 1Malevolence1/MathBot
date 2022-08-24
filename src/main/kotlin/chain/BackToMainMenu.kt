@@ -1,17 +1,23 @@
 package chain
 
 import core.Updating
+import executables.AnswerToCallback
+import executables.EditTextMessage
 import executables.Executable
 import executables.SendMessage
-import handlers.CommandEvent
+import handlers.OnCallbackGotten
 import keyboard_markup.InlineButton
 import keyboard_markup.InlineKeyboardMarkup
 
-class StartGreeting : Chain(CommandEvent("/start")) {
-
+class BackToMainMenu : Chain(
+    OnCallbackGotten("backToMainMenu")
+) {
     override suspend fun executableChain(updating: Updating): List<Executable> {
         return listOf(
-            SendMessage(
+            AnswerToCallback(
+                mKey, "Возвращаюсь на главную страницу\\."
+            ),
+            EditTextMessage(
                 mKey,
                 buildString {
                     appendLine("Приветствую тебя\\, дорогой игрок\\.")
@@ -35,12 +41,7 @@ class StartGreeting : Chain(CommandEvent("/start")) {
                     )
                 )
             )
-            {
-                mStates.state(updating).editor(mStates).apply {
-                    putInt("mainMessage", it)
-                }.commit()
-            }
+
         )
     }
 }
-

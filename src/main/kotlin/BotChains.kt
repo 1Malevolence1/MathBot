@@ -10,6 +10,8 @@ class BotChains(
 ) : BotChains {
 
     override fun chains() = listOf(
-        StartGreeting()
+        StartGreeting(),
+        LevelSelection(),
+        BackToMainMenu()
     )
 }
